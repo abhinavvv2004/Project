@@ -26,3 +26,18 @@ jobs:
         run: |
           docker build -t abhinavv2004/mean-frontend:latest ./frontend
           docker push abhinavv2004/mean-frontend:latest
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VM
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            cd /home/ubuntu/Project
+            docker-compose pull
+            docker-compose up -d
