@@ -1,11 +1,24 @@
-const dbConfig = require("../config/db.config.js");
-
 const mongoose = require("mongoose");
-mongoose.Promise = global.Promise;
 
-const db = {};
-db.mongoose = mongoose;
-db.url = dbConfig.url;
-db.tutorials = require("./tutorial.model.js")(mongoose);
+// Prevent deprecation warning
+mongoose.set("strictQuery", false);
 
-module.exports = db;
+// IMPORTANT: Use Docker service name, not localhost
+const DB_URL = process.env.MONGO_URI || "mongodb://mongodb:27017/meanapp";
+
+mongoose
+  .connect(DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("✅ Connected to MongoDB");
+  })
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);
+  });
+
+module.exports = {
+  mongoose,
+};

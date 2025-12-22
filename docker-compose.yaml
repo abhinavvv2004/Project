@@ -7,8 +7,6 @@ services:
     restart: always
     volumes:
       - mongodb_data:/data/db
-    environment:
-      MONGO_INITDB_DATABASE: meanapp
     networks:
       - mean-network
 
@@ -16,11 +14,11 @@ services:
     image: abhinavv2004/mean-backend:latest
     container_name: backend
     restart: always
-    environment:
-      - MONGO_URI=mongodb://mongodb:27017/meanapp
-      - PORT=3000
     ports:
-      - "5000:3000"
+      - "3000:3000"
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/meanapp
+      PORT: 3000
     depends_on:
       - mongodb
     networks:
@@ -30,8 +28,6 @@ services:
     image: abhinavv2004/mean-frontend:latest
     container_name: frontend
     restart: always
-    depends_on:
-      - backend
     networks:
       - mean-network
 
@@ -54,4 +50,4 @@ volumes:
 
 networks:
   mean-network:
-    driver: bridge
+   driver: bridge
