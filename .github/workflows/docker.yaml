@@ -19,10 +19,10 @@ jobs:
 
       - name: Build & Push Backend
         run: |
-          docker build -t abhinavvv2004/mean-backend:latest ./backend
-          docker push abhinavvv2004/mean-backend:latest
+          docker build -t abhinavv2004/mean-backend:latest ./backend
+          docker push abhinavv2004/mean-backend:latest
 
       - name: Build & Push Frontend
         run: |
-          docker build -t abhinavvv2004/mean-frontend:latest ./frontend
-          docker push abhinavvv2004/mean-frontend:latest
+          docker build -t abhinavv2004/mean-frontend:latest ./frontend
+          docker push abhinavv2004/mean-frontend:latest
