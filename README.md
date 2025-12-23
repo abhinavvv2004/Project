@@ -67,8 +67,8 @@ Docker Compose
 Ubuntu Linux
 🚀 Getting Started
 1️⃣ Clone the Repository
-git clone https://github.com/<your-username>/<repo-name>.git
-cd <repo-name>
+git clone https://github.com/abhinavvv2004/Project.git
+cd Project
 
 2️⃣ Build and Run with Docker Compose
 docker-compose up -d --build
@@ -86,8 +86,8 @@ Nginx reverse proxy
 
 🌐 Access the Application
 Service	URL
-Frontend	http://<SERVER_PUBLIC_IP>
-Backend API	http://<SERVER_PUBLIC_IP>/api
+Frontend	http://43.205.92.215
+Backend API	http://43.205.92.215/api
 🔁 Nginx Reverse Proxy Configuration
 
 Nginx routes traffic using Docker container names:
